@@ -103,7 +103,7 @@ public class Motors extends Thread{
 				//will follow the line and continue trying to find it unless little while has passed on white.
 				case 1:
 					//this moves code to stage 2 if only white is detected for a while
-					if(DEObj.GetTime() > 6000 && DEObj.GetFollow()){ 
+					if(DEObj.GetTime() > 5000 && DEObj.GetFollow()){ 
 						stage=2;
 						break;
 					}
@@ -166,15 +166,6 @@ public class Motors extends Thread{
 							time=0;
 						}
 						else if(straight >= 2){ 
-							/*
-							left=50;
-							right=50;
-							Forward(left,right);
-							Delay.msDelay(2300);
-							stage = 5;
-							LCD.clear();
-							*/
-							
 							stage = 5;
 							break;
 						}
@@ -203,12 +194,14 @@ public class Motors extends Thread{
 					
 				case 5:
 					left=40;
-					right=40;
+					right=35;
 					time++;
 
-					if(value < DEObj.GetMiddle() * 1.1 && time > 50){
+					if(value < DEObj.GetMiddle() * 1.1 && time > 1000){
+
+						forward = 50;
+						midpoint = midpoint + 0.11;
 						stage = 6;
-						LCD.clear();
 					}
 					
 					break;
